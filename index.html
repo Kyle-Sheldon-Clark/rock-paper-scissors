@@ -10,22 +10,40 @@
     <script>
         function computerPlay() {
             let choice = Math.round(Math.random()*(3-1)+1);
+            let computerSelection;
             if (choice === 1) {
-                console.log('rock');
+                computerSelection = 'rock';
             } else if (choice === 2) {
-                console.log('paper');
+                computerSelection = 'paper';
             } else {
-                console.log('scissors');
+                computerSelection = 'scissors';
             }
-            
+            return computerSelection;
         }
 
         function playerPlay() {
             const playerSelection = prompt("Rock, Paper, or Scissors?");
-            console.log(playerSelection.toLowerCase());
+            return playerSelection.toLowerCase();
         }
-        computerPlay();
-        playerPlay();
+
+        function playGame(playerSelection, computerSelection) {
+            if (playerSelection === computerSelection) {
+                alert('Tie!');
+            }else if (playerSelection === 'rock' && computerSelection === 'paper') {
+                alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+            }else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+                alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+            }else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+                alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+            }else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+            }else if (playerSelection === 'paper' && computerSelection === 'rock') {
+                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+            }else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+            }
+        }
+        playGame(playerPlay(), computerPlay());
     </script>
 </body>
 </html>
