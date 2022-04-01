@@ -26,24 +26,56 @@
             return playerSelection.toLowerCase();
         }
 
-        function playGame(playerSelection, computerSelection) {
+        function playRound(playerSelection, computerSelection) {
+            let winner;
             if (playerSelection === computerSelection) {
                 alert('Tie!');
+                winner = 'none';
             }else if (playerSelection === 'rock' && computerSelection === 'paper') {
                 alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+                winner = 'computer';
             }else if (playerSelection === 'scissors' && computerSelection === 'rock') {
                 alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+                winner = 'computer';
             }else if (playerSelection === 'paper' && computerSelection === 'scissors') {
                 alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+                winner = 'computer';
             }else if (playerSelection === 'rock' && computerSelection === 'scissors') {
                 alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                winner = 'player';
             }else if (playerSelection === 'paper' && computerSelection === 'rock') {
                 alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                winner = 'player';
             }else if (playerSelection === 'scissors' && computerSelection === 'paper') {
                 alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                winner = 'player';
+            }
+            return winner;
+        }
+
+        function game(numOfRounds) {
+            //keep score
+            //anounce overall winner at end
+            let playerScore = 0;
+            let computerScore = 0;
+            for (let i = 0; i <= numOfRounds; i++) {
+                let result = playRound(playerPlay(), computerPlay());
+                if (result === 'computer') {
+                    computerScore++;
+                } else if (result === 'player') {
+                    playerScore++;
+                }
+            }
+
+            if (playerScore > computerScore) {
+                alert(`You Win! ${playerScore} rounds to ${computerScore}`);
+            } else if (playerScore < computerScore) {
+                alert(`You Lose! ${computerScore} rounds to ${playerScore}`);
+            } else {
+                alert(`The game is a tie. ${playerScore} rounds to ${computerScore}`);
             }
         }
-        playGame(playerPlay(), computerPlay());
+        game(5);
     </script>
 </body>
 </html>
