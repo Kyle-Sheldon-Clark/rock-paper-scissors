@@ -11,15 +11,21 @@
         function computerPlay() {
             let choice = Math.round(Math.random()*(3-1)+1);
             if (choice === 1) {
-                console.log('Rock');
+                console.log('rock');
             } else if (choice === 2) {
-                console.log('Paper');
+                console.log('paper');
             } else {
-                console.log('Scissors');
+                console.log('scissors');
             }
             
         }
+
+        function playerPlay() {
+            const playerSelection = prompt("Rock, Paper, or Scissors?");
+            console.log(playerSelection.toLowerCase());
+        }
         computerPlay();
+        playerPlay();
     </script>
 </body>
 </html>
