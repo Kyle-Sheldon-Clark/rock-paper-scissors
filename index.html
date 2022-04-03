@@ -12,6 +12,9 @@
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
+    <div id="results">
+
+    </div>
     <script>
         function computerPlay() {
             let choice = Math.round(Math.random()*(3-1)+1);
@@ -37,27 +40,28 @@
         }
 
         function playRound(playerSelection, computerSelection) {
+            let results = document.getElementById("results");
             let winner;
             if (playerSelection === computerSelection) {
-                alert('Tie!');
+                results.innerHTML = 'Tie!';
                 winner = 'none';
             }else if (playerSelection === 'rock' && computerSelection === 'paper') {
-                alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+                results.innerHTML = `You lose! ${computerSelection} beats ${playerSelection}`;
                 winner = 'computer';
             }else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-                alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+                results.innerHTML = `You lose! ${computerSelection} beats ${playerSelection}`;
                 winner = 'computer';
             }else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-                alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+                results.innerHTML = `You lose! ${computerSelection} beats ${playerSelection}`;
                 winner = 'computer';
             }else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                results.innerHTML = `You Win! ${playerSelection} beats ${computerSelection}`;
                 winner = 'player';
             }else if (playerSelection === 'paper' && computerSelection === 'rock') {
-                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                results.innerHTML = `You Win! ${playerSelection} beats ${computerSelection}`;
                 winner = 'player';
             }else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-                alert(`You Win! ${playerSelection} beats ${computerSelection}`);
+                results.innerHTML = `You Win! ${playerSelection} beats ${computerSelection}`;
                 winner = 'player';
             }
             return winner;
