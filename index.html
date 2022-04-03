@@ -16,6 +16,10 @@
 
     </div>
     <script>
+        let rounds = 0;
+        let playerScore = 0;
+        let computerScore = 0;
+        let totalRounds = 5;
         function computerPlay() {
             let choice = Math.round(Math.random()*(3-1)+1);
             let computerSelection;
@@ -64,29 +68,25 @@
                 results.innerHTML = `You Win! ${playerSelection} beats ${computerSelection}`;
                 winner = 'player';
             }
-            return winner;
+            updateGame(winner);
         }
 
-        function game(numOfRounds) {
-            //keep score
-            //anounce overall winner at end
-            let playerScore = 0;
-            let computerScore = 0;
-            for (let i = 0; i <= numOfRounds; i++) {
-                let result = playRound(playerPlay(), computerPlay());
-                if (result === 'computer') {
-                    computerScore++;
-                } else if (result === 'player') {
-                    playerScore++;
-                }
+        function updateGame(winner) {
+            let results = document.getElementById('results');
+            if (winner === 'computer') {
+                computerScore++;
+            } else if (winner === 'player') {
+                playerScore++;
             }
-
-            if (playerScore > computerScore) {
-                alert(`You Win! ${playerScore} rounds to ${computerScore}`);
-            } else if (playerScore < computerScore) {
-                alert(`You Lose! ${computerScore} rounds to ${playerScore}`);
-            } else {
-                alert(`The game is a tie. ${playerScore} rounds to ${computerScore}`);
+            rounds++;
+            if (rounds > totalRounds) {
+                if (playerScore > computerScore) {
+                    results.innerHTML = `You Win! ${playerScore} rounds to ${computerScore}`;
+                } else if (playerScore < computerScore) {
+                    results.innerHTML = `You Lose! ${computerScore} rounds to ${playerScore}`;
+                } else {
+                    results.innerHTML = `The game is a tie. ${playerScore} rounds to ${computerScore}`;
+                }
             }
         }
         document.getElementById("rock").addEventListener("click", () => {
