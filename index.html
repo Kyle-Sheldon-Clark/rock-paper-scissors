@@ -12,8 +12,13 @@
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
-    <div id="results">
+    <div id="results-container">
+        <div id="results">
 
+        </div>
+        <div id="score">
+
+        </div>
     </div>
     <script>
         let rounds = 0;
@@ -79,7 +84,8 @@
                 playerScore++;
             }
             rounds++;
-            if (rounds > totalRounds) {
+            document.getElementById('score').innerHTML = `Rounds: ${rounds}  |  Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
+            if (rounds >= totalRounds) {
                 if (playerScore > computerScore) {
                     results.innerHTML = `You Win! ${playerScore} rounds to ${computerScore}`;
                 } else if (playerScore < computerScore) {
