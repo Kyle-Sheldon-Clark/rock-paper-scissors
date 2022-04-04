@@ -80,10 +80,11 @@
             let results = document.getElementById('results');
             if (winner === 'computer') {
                 computerScore++;
+                rounds++;
             } else if (winner === 'player') {
                 playerScore++;
+                rounds++;
             }
-            rounds++;
             document.getElementById('score').innerHTML = `Rounds: ${rounds}  |  Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
             if (rounds >= totalRounds) {
                 if (playerScore > computerScore) {
@@ -95,6 +96,7 @@
                 }
             }
         }
+        updateGame(null);
         document.getElementById("rock").addEventListener("click", () => {
             playRound('rock', computerPlay());
         });
