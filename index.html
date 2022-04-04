@@ -76,31 +76,37 @@
                 results.innerHTML = `You Win! ${playerSelection} beats ${computerSelection}`;
                 winner = 'player';
             }
-            updateGame(winner);
+            updateScore(winner);
         }
 
         function newGame() {
-            //reset player, computer, and round scores and enable buttons
-            //reset results html
             computerScore = 0;
             playerScore = 0;
             rounds = 0;
-            document.getElementById('score').innerHTML = `Rounds: ${rounds}  |  Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
+            renderScore();
             document.getElementById('results').innerHTML = '';
             document.getElementById('rock').disabled = false;
             document.getElementById('paper').disabled = false;
             document.getElementById('scissors').disabled = false;
         }
 
-        function updateGame(winner) {
-            let results = document.getElementById('results');
+        function renderScore() {
+            document.getElementById('score').innerHTML = `Rounds: ${rounds}  |  Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
+        }
+
+        function updateScore(winner) {
             if (winner === 'computer') {
                 computerScore++;
             } else if (winner === 'player') {
                 playerScore++;
             }
             rounds++;
-            document.getElementById('score').innerHTML = `Rounds: ${rounds}  |  Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
+            renderScore();
+            gameEnd(winner);
+        }
+
+        function gameEnd(winner) {
+            let results = document.getElementById('results');
             if (rounds >= totalRounds) {
                 if (playerScore > computerScore) {
                     results.innerHTML = `You Win! ${playerScore} rounds to ${computerScore}`;
