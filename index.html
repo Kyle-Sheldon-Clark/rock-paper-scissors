@@ -20,6 +20,9 @@
 
         </div>
     </div>
+    <div>
+        <button id="new-game">New Game</button>
+    </div>
     <script>
         let rounds = 0;
         let playerScore = 0;
@@ -76,15 +79,27 @@
             updateGame(winner);
         }
 
+        function newGame() {
+            //reset player, computer, and round scores and enable buttons
+            //reset results html
+            computerScore = 0;
+            playerScore = 0;
+            rounds = 0;
+            document.getElementById('score').innerHTML = `Rounds: ${rounds}  |  Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('rock').disabled = false;
+            document.getElementById('paper').disabled = false;
+            document.getElementById('scissors').disabled = false;
+        }
+
         function updateGame(winner) {
             let results = document.getElementById('results');
             if (winner === 'computer') {
                 computerScore++;
-                rounds++;
             } else if (winner === 'player') {
                 playerScore++;
-                rounds++;
             }
+            rounds++;
             document.getElementById('score').innerHTML = `Rounds: ${rounds}  |  Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
             if (rounds >= totalRounds) {
                 if (playerScore > computerScore) {
@@ -94,19 +109,20 @@
                 } else {
                     results.innerHTML = `The game is a tie. ${playerScore} rounds to ${computerScore}`;
                 }
-                document.getElementById("rock").disabled = true;
-                document.getElementById("paper").disabled = true;
-                document.getElementById("scissors").disabled = true;
+                document.getElementById('rock').disabled = true;
+                document.getElementById('paper').disabled = true;
+                document.getElementById('scissors').disabled = true;
             }
         }
-        updateGame(null);
-        document.getElementById("rock").addEventListener("click", () => {
+        newGame();
+        document.getElementById('new-game').addEventListener('click', newGame);
+        document.getElementById('rock').addEventListener('click', () => {
             playRound('rock', computerPlay());
         });
-        document.getElementById("paper").addEventListener("click", () => {
+        document.getElementById('paper').addEventListener('click', () => {
             playRound('paper', computerPlay());
         });
-        document.getElementById("scissors").addEventListener("click", () => {
+        document.getElementById('scissors').addEventListener('click', () => {
             playRound('scissors', computerPlay());
         });
     </script>
