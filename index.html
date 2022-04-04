@@ -94,6 +94,9 @@
                 } else {
                     results.innerHTML = `The game is a tie. ${playerScore} rounds to ${computerScore}`;
                 }
+                document.getElementById("rock").disabled = true;
+                document.getElementById("paper").disabled = true;
+                document.getElementById("scissors").disabled = true;
             }
         }
         updateGame(null);
