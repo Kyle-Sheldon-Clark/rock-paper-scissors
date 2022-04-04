@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+body div {
+    height: 20vh;
+}
+
+button {
+    text-decoration: none;
+    border: none;
+    background-color: rgba(96, 128, 177, 0.5);
+    width: 10vw;
+    height: 10vh;
+}
+
+#score {
+    height: 30vh;
+    flex-basis: 100vw;
+    text-align: center;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+#button-container {
+    flex-basis: 100vw;
+    text-align: center;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+#results-container {
+    flex-basis: 100vw;
+    text-align: center;
+    padding-left: auto;
+    padding-right: auto;
+    height: 20vh;
+}
+
+#new-game-container {
+    flex-basis: 100vw;
+    text-align: center;
+    padding-left: auto;
+    padding-right: auto;
+}
